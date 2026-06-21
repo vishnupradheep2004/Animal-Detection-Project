@@ -1,0 +1,57 @@
+{
+  "name": "Animal Detection System",
+  "version": "1.0.0",
+  "environment": "production",
+  "server": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": false
+  },
+  "camera": {
+    "type": "webcam",
+    "url": "",
+    "index": 0,
+    "fps": 30,
+    "resolution": {
+      "width": 640,
+      "height": 480
+    }
+  },
+  "model": {
+    "path": "runs/detect/train/weights/best.pt",
+    "confidence": 0.6,
+    "device": "cpu",
+    "half_precision": false
+  },
+  "telegram": {
+    "enabled": false,
+    "bot_token": "",
+    "chat_id": "",
+    "send_photos": true,
+    "send_status_updates": true,
+    "status_update_interval": 3600
+  },
+  "storage": {
+    "snapshots_dir": "snapshots",
+    "logs_dir": "logs",
+    "max_storage_gb": 10,
+    "retention_days": 7
+  },
+  "alerts": {
+    "enabled": true,
+    "confidence_threshold": 0.7,
+    "daily_limit": 50,
+    "hourly_limit": 10,
+    "cooldown_seconds": 30
+  },
+  "processing": {
+    "save_snapshots": true,
+    "log_events": true,
+    "update_dashboard": true,
+    "dashboard_update_interval": 30
+  },
+  "classes": {
+    "track": ["Lion", "Rabbit"],
+    "ignore": []
+  }
+}

@@ -1,14 +1,21 @@
 from ultralytics import YOLO
 import cv2
-import math 
+import math
+import os
 # start webcam
 cap = cv2.VideoCapture(0)
 cap.set(3, 640)
 cap.set(4, 480)
 
 # model
-model = YOLO("E://Animal_Detection//runs//detect//train//weights//best.pt")
-print("Model loaded successfully!")
+model_path = "runs/detect/train/weights/best.pt"
+if not os.path.exists(model_path):
+    print(f"Model not found at {model_path}")
+    print(f"Current directory: {os.getcwd()}")
+    print(f"Files in runs/detect/train/weights: {os.listdir('runs/detect/train/weights') if os.path.exists('runs/detect/train/weights') else 'Directory not found'}")
+else:
+    model = YOLO(model_path)
+    print("Model loaded successfully!")
 
 
 # object classes

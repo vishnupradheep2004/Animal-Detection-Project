@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  animal-detection:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: animal-detection-yolov8
+    
+    volumes:
+      - ./snapshots:/app/snapshots
+      - ./logs:/app/logs
+      - ./runs:/app/runs
+      - ./dashboard_output:/app/dashboard_output
+    
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - PYTHONUNBUFFERED=1
+    
+    # For GPU support, uncomment and configure:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    
+    restart: unless-stopped
+    
+    # For webcam or RTSP camera access (if on localhost)
+    devices:
+      - /dev/video0:/dev/video0  # Webcam device
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Nginx for serving dashboard
+  dashboard-server:
+    image: nginx:alpine
+    container_name: animal-detection-dashboard
+    
+    ports:
+      - "8080:80"
+    
+    volumes:
+      - ./dashboard_output:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    
+    depends_on:
+      - animal-detection
+    
+    restart: unless-stopped
+
+volumes:
+  snapshots:
+  logs:
+  runs:
