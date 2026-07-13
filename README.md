@@ -14,6 +14,29 @@ Welcome to the Animal Detection with Custom Trained YOLOv5 project! This applica
 - Integration with OpenCV for seamless execution and visualization.
 - Efficient inference leveraging hardware acceleration platforms.
 
+## Job Opportunity
+
+**Role:** Computer Vision Engineer / YOLO Developer
+
+**Job Description:**
+This role focuses on improving and extending the animal detection pipeline using YOLOv8. The team member will work on dataset preparation, model training, inference optimization, and integration with the existing OpenCV-based application. The position is ideal for someone who enjoys developing practical computer vision solutions, debugging real-world detection workflows, and deploying models for monitoring animal behavior.
+
+**Responsibilities:**
+
+- Prepare and annotate training datasets for animal detection.
+- Train, validate, and optimize YOLOv8 models for accuracy and speed.
+- Integrate model inference into the application workflow.
+- Evaluate detection performance and implement improvements.
+- Support documentation, testing, and deployment of the project.
+
+**Qualifications:**
+
+- Strong Python programming skills.
+- Experience with YOLO/Ultralytics, OpenCV, and deep learning.
+- Familiarity with computer vision workflows and object detection.
+- Ability to analyze model predictions and tune performance.
+- Good communication and documentation habits.
+
 ## Installation
 
 To run the Animal Detection with Custom Trained YOLOv5 project, follow these steps:
